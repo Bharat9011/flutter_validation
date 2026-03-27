@@ -1,39 +1,146 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# flutter_validation
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A lightweight Flutter package for simple, chainable form validation.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Right now the package focuses on email validation through a fluent API, so you can stack rules and return the first validation error as a `String?`.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Chain multiple email validation rules in a readable way
+- Return `null` when validation passes
+- Return the first validation message when validation fails
+- Keep validation logic outside widgets and forms
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your `pubspec.yaml`:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  flutter_validation:
+    path: ../flutter_validation
 ```
 
-## Additional information
+Then run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub get
+```
+
+## Import
+
+```dart
+import 'package:flutter_validation/flutter_validation.dart';
+```
+
+## Basic Usage
+
+Use `Validatiors` to start a validation chain and call `validate()` at the end.
+
+```dart
+final error = Validatiors()
+    .emailValidator(value: 'bharat.sc01@gmail.com')
+    .isRequired()
+    .isValidEmail()
+    .noSpaces()
+    .validate();
+
+if (error == null) {
+  print('Email is valid');
+} else {
+  print(error);
+}
+```
+
+This works well with Flutter form fields:
+
+```dart
+TextFormField(
+  validator: (value) => Validatiors()
+      .emailValidator(value: value)
+      .isRequired()
+      .isValidEmail()
+      .noSpaces()
+      .singleAtSymbol()
+      .noConsecutiveDots()
+      .validate(),
+)
+```
+
+## Available Email Rules
+
+The current email validator supports these chainable methods:
+
+- `isRequired()`
+- `isValidEmail()`
+- `noSpaces()`
+- `hasAtSymbol()`
+- `allowDomain(List<String> domains)`
+- `minLength(int length)`
+- `maxLength(int length)`
+- `singleAtSymbol()`
+- `noStartingDot()`
+- `noEndingDot()`
+- `noConsecutiveDots()`
+- `validate()`
+
+## Examples
+
+Validate that an email includes `@`:
+
+```dart
+final error = Validatiors()
+    .emailValidator(value: 'bharat.sc01.com')
+    .hasAtSymbol()
+    .validate();
+```
+
+Restrict allowed domains:
+
+```dart
+final error = Validatiors()
+    .emailValidator(value: 'user@company.com')
+    .allowDomain(['.com', '.in', '.outlook'])
+    .validate();
+```
+
+Apply multiple checks together:
+
+```dart
+final error = Validatiors()
+    .emailValidator(value: ' user..name@gmail.com ')
+    .isRequired()
+    .noSpaces()
+    .singleAtSymbol()
+    .noStartingDot()
+    .noEndingDot()
+    .noConsecutiveDots()
+    .validate();
+```
+
+## How Validation Works
+
+Each rule checks the current value and stores the first error it finds. Once an error has been set, later rules do not replace it. `validate()` returns:
+
+- `null` when the value passes all applied rules
+- An error message when a rule fails
+
+## Current Scope
+
+The public API currently provides:
+
+- Email validation support through `emailValidator(...)`
+- A placeholder `contactValidator(...)` method that is not yet implemented with validation rules
+
+## Testing
+
+Run the package tests with:
+
+```bash
+flutter test
+```
+
+## Notes
+
+- The entry class is named `Validatiors` in the current implementation.
+- `emailValidator` expects a non-null value internally, so it is safest to use it with form values that are present or passed directly from a validator callback.
