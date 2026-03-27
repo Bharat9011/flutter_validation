@@ -1,3 +1,3 @@
-library flutter_validation;
+library;
 
 export 'src/validations.dart';
