@@ -4,6 +4,4 @@ abstract class Validators {
   EmailValidationSupport? emailValidator({required String? value});
 
   String? contactValidator({required String? value});
-
-
 }

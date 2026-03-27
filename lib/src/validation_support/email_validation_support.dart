@@ -55,7 +55,7 @@ class EmailValidationSupport {
     if (_value.length > length) {
       _error ??= "Email must be less than $length characters";
     }
-    return this;  
+    return this;
   }
 
   EmailValidationSupport singleAtSymbol() {
