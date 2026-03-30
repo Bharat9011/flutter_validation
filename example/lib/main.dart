@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void submitForm() {
     if (_formKey.currentState!.validate()) {
       log("Form Valid");
+      log("Form Valid ✅");
 
       // You can test your plugin here
       log(nameController.text);
@@ -52,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     } else {
       log("Form Invalid");
+      log("Form Invalid ❌");
     }
   }
 
