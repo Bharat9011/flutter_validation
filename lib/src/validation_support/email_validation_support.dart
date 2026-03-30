@@ -4,6 +4,7 @@ class EmailValidationSupport {
 
   EmailValidationSupport(this._value);
 
+
   EmailValidationSupport isRequired() {
     if (_value.trim().isEmpty) {
       _error ??= "Email is required";

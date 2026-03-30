@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void submitForm() {
     if (_formKey.currentState!.validate()) {
+      log("Form Valid");
       log("Form Valid ✅");
 
       // You can test your plugin here
@@ -51,9 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
         const SnackBar(content: Text("Form Submitted Successfully")),
       );
     } else {
+      log("Form Invalid");
       log("Form Invalid ❌");
     }
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
