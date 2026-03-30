@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_validation/src/validations.dart';
+import 'package:flutter_validation/src/validators.dart';
 
 void main() {
   test('Email Formate Check', () {
-    var validation = Validatiors()
+    var validation = Validators()
         .emailValidator(value: "bharat.sc01@gmail.com")
         .isRequired()
         .isValidEmail()
@@ -12,7 +12,7 @@ void main() {
   });
 
   test('Check Space in email', () {
-    var validation = Validatiors()
+    var validation = Validators()
         .emailValidator(value: "bharat .sc01@gmail.com")
         .isRequired()
         .isValidEmail()
@@ -22,7 +22,7 @@ void main() {
   });
 
   test('Check @ in email', () {
-    var validation = Validatiors()
+    var validation = Validators()
         .emailValidator(value: "bharat.sc01.com")
         .hasAtSymbol()
         .validate();
@@ -31,7 +31,7 @@ void main() {
 
   test('Check domain in email', () {
     List<String> domains = [".com", ".outlook", ".in"];
-    var validation = Validatiors()
+    var validation = Validators()
         .emailValidator(value: "bharat.sc01.com")
         .allowDomain(domains)
         .validate();

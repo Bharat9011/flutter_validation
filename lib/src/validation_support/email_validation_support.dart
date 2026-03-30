@@ -86,6 +86,18 @@ class EmailValidationSupport {
     return this;
   }
 
+  EmailValidationSupport custom(
+    bool Function(String value) validator,
+    String message,
+  ) {
+    if (_error != null) return this;
+
+    if (!validator(_value)) {
+      _error = message;
+    }
+    return this;
+  }
+
   String? validate() {
     return _error;
   }

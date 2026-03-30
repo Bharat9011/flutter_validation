@@ -1,8 +1,8 @@
 import 'package:flutter_validation/src/validation_support/email_validation_support.dart';
 
-import 'interface/validators.dart';
+import 'interface/validator.dart';
 
-class Validatiors implements Validators {
+class Validators implements Validator {
   @override
   String? contactValidator({required String? value}) {
     return "";
