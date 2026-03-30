@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_validation/flutter_validation.dart';
 
@@ -38,20 +40,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void submitForm() {
     if (_formKey.currentState!.validate()) {
-      print("Form Valid ✅");
+      log("Form Valid");
 
       // You can test your plugin here
-      print(nameController.text);
-      print(emailController.text);
-      print(passwordController.text);
+      log(nameController.text);
+      log(emailController.text);
+      log(passwordController.text);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Form Submitted Successfully")),
       );
     } else {
-      print("Form Invalid ❌");
+      log("Form Invalid");
     }
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
