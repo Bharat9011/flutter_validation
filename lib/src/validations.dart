@@ -15,12 +15,10 @@ class Validatiors implements Validators {
     return EmailValidationSupport(value!);
   }
 
-  @override
   PasswordValidationSupport passwordValidator({required String? value}) {
     return PasswordValidationSupport(value ?? '');
   }
 
-  @override
   ConfirmPasswordValidationSupport confirmPasswordValidator({
     required String? password,
     required String? confirmPassword,
