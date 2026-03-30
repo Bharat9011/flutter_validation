@@ -1,6 +1,6 @@
-import 'package:flutter_validation/src/validation_support/confirmpass_validation_support.dart';
+import 'package:flutter_validation/src/validation_support/confirm_password_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/email_validation_support.dart';
-import 'package:flutter_validation/src/validation_support/pass_validation_support.dart';
+import 'package:flutter_validation/src/validation_support/password_validation_support.dart';
 
 import 'interface/validators.dart';
 
