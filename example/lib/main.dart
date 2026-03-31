@@ -110,12 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: "Password",
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value == null || value.length < 6) {
-                    return "Password must be 6+ characters";
-                  }
-                  return null;
-                },
+                validator: (value) => Validators()
+                    .passwordValidator(value: value)
+                    .isRequired()
+                    .validate(),
               ),
 
               const SizedBox(height: 16),
@@ -128,12 +126,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: "Confirm Password",
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) {
-                  if (value != passwordController.text) {
-                    return "Passwords do not match";
-                  }
-                  return null;
-                },
+                validator: (value) => Validators()
+                    .confirmPasswordValidator(
+                      password: passwordController.text,
+                      confirmPassword: value,
+                    )
+                    .isRequired()
+                    .matchesPassword()
+                    .validate(),
               ),
 
               const SizedBox(height: 24),
