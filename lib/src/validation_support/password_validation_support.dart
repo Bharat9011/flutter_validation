@@ -4,9 +4,7 @@ class PasswordValidationSupport {
 
   PasswordValidationSupport(String value) : _value = value;
 
-
-
-PasswordValidationSupport isRequired() {
+  PasswordValidationSupport isRequired() {
     if (_value.trim().isEmpty) {
       _error ??= "Password is required";
     }
@@ -62,17 +60,14 @@ PasswordValidationSupport isRequired() {
     return this;
   }
 
-custom(
-  bool Function(String value) validator,
-  String message,
-) {
-  if (_error != null) return this;
+  custom(bool Function(String value) validator, String message) {
+    if (_error != null) return this;
 
-  if (!validator(_value)) {
-    _error = message;
+    if (!validator(_value)) {
+      _error = message;
+    }
+    return this;
   }
-  return this;
-}
 
   String? validate() {
     return _error;
