@@ -2,6 +2,7 @@ import 'package:flutter_validation/src/validation_support/confirm_password_valid
 import 'package:flutter_validation/src/validation_support/contact_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/email_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/name_validation_support.dart';
+import 'package:flutter_validation/src/validation_support/number_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/password_validation_support.dart';
 
 import 'interface/validator.dart';
@@ -38,7 +39,12 @@ class Validators implements Validator {
     return NameValidationSupport(value ?? '');
   }
 
- 
+  @override
+  NumberValidationSupport numberValidator({required String? value}) {
+    return NumberValidationSupport(value ?? '');
+  }
+
+  @override
   String? multiValidator({required List<String?> validations}) {
     for (var val in validations) {
       if (val != null) return val;
