@@ -4,84 +4,85 @@ class EmailValidationSupport {
 
   EmailValidationSupport(this._value);
 
-  EmailValidationSupport isRequired() {
+  EmailValidationSupport isRequired({String? message}) {
     if (_value.trim().isEmpty) {
-      _error ??= "Email is required";
+      _error ??= message ??= "Email is required";
     }
     return this;
   }
 
-  EmailValidationSupport isValidEmail() {
+  EmailValidationSupport isValidEmail({String? message}) {
     final regex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
     if (!regex.hasMatch(_value)) {
-      _error ??= "Invalid email";
+      _error ??= message ??= "Invalid email";
     }
     return this;
   }
 
-  EmailValidationSupport noSpaces() {
+  EmailValidationSupport noSpaces({String? message}) {
     if (_value.contains(" ")) {
-      _error ??= "Email should not contain spaces";
+      _error ??= message ??= "Email should not contain spaces";
     }
     return this;
   }
 
-  EmailValidationSupport hasAtSymbol() {
+  EmailValidationSupport hasAtSymbol({String? message}) {
     if (!_value.contains("@")) {
-      _error ??= "Email must contain @";
+      _error ??= message ??= "Email must contain @";
     }
     return this;
   }
 
-  EmailValidationSupport allowDomain(List<String> domains) {
+  EmailValidationSupport allowDomain(List<String> domains, {String? message}) {
     bool isValid = domains.any((domain) => _value.endsWith(domain));
 
     if (!isValid) {
       String allowed = domains.join(', ');
-      _error ??= "Email must be from one of these domains: $allowed";
+      _error ??= message ??=
+          "Email must be from one of these domains: $allowed";
     }
 
     return this;
   }
 
-  EmailValidationSupport minLength(int length) {
+  EmailValidationSupport minLength(int length, {String? message}) {
     if (_value.length < length) {
-      _error ??= "Email must be at least $length characters";
+      _error ??= message ??= "Email must be at least $length characters";
     }
     return this;
   }
 
-  EmailValidationSupport maxLength(int length) {
+  EmailValidationSupport maxLength(int length, {String? message}) {
     if (_value.length > length) {
-      _error ??= "Email must be less than $length characters";
+      _error ??= message ??= "Email must be less than $length characters";
     }
     return this;
   }
 
-  EmailValidationSupport singleAtSymbol() {
+  EmailValidationSupport singleAtSymbol({String? message}) {
     if ("@".allMatches(_value).length > 1) {
-      _error ??= "Email cannot contain multiple @";
+      _error ??= message ??= "Email cannot contain multiple @";
     }
     return this;
   }
 
-  EmailValidationSupport noStartingDot() {
+  EmailValidationSupport noStartingDot({String? message}) {
     if (_value.startsWith(".")) {
-      _error ??= "Email cannot start with dot";
+      _error ??= message ??= "Email cannot start with dot";
     }
     return this;
   }
 
-  EmailValidationSupport noEndingDot() {
+  EmailValidationSupport noEndingDot({String? message}) {
     if (_value.endsWith(".")) {
-      _error ??= "Email cannot end with dot";
+      _error ??= message ??= "Email cannot end with dot";
     }
     return this;
   }
 
-  EmailValidationSupport noConsecutiveDots() {
+  EmailValidationSupport noConsecutiveDots({String? message}) {
     if (_value.contains("..")) {
-      _error ??= "Email cannot contain consecutive dots";
+      _error ??= message ??= "Email cannot contain consecutive dots";
     }
     return this;
   }

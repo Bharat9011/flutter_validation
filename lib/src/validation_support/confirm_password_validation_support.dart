@@ -11,7 +11,7 @@ class ConfirmPasswordValidationSupport {
 
   ConfirmPasswordValidationSupport isRequired({String? message}) {
     if (_confirmPassword.trim().isEmpty) {
-      _error ??=message ?? "Confirm password is required";
+      _error ??= message ?? "Confirm password is required";
     }
     return this;
   }
@@ -24,7 +24,7 @@ class ConfirmPasswordValidationSupport {
   }
 
   ConfirmPasswordValidationSupport custom(
-    bool Function(String password, String confirmPassword) validator,{
+    bool Function(String password, String confirmPassword) validator, {
     String message = "Confirm password is invalid",
   }) {
     if (_error != null) return this;

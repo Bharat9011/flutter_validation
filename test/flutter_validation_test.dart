@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_validation/src/validators.dart';
 
 void main() {
-    test('Email Formate Check', () {
+  test('Email Formate Check', () {
     var validation = Validators()
         .emailValidator(value: "bharat.sc01@gmail.com")
         .isRequired()
@@ -36,5 +36,19 @@ void main() {
         .allowDomain(domains)
         .validate();
     expect(validation, null);
+  });
+
+  test("check multi", () {
+    List<String?> validationslist = [
+      Validators()
+          .emailValidator(value: "bharat@gmail.com")
+          .isValidEmail()
+          .validate(),
+      Validators().passwordValidator(value: "bharat1").hasNumber().validate(),
+    ];
+
+    var validator = Validators().multiValidator(validations: validationslist);
+
+    expect(validator, null);
   });
 }
