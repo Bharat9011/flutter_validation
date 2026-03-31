@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_validation/src/validators.dart';
 
 void main() {
-    test('Email Formate Check', () {
+  test('Email Formate Check', () {
     var validation = Validators()
         .emailValidator(value: "bharat.sc01@gmail.com")
         .isRequired()
