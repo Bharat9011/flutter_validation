@@ -9,16 +9,28 @@ class ConfirmPasswordValidationSupport {
   }) : _password = password,
        _confirmPassword = confirmPassword;
 
-  ConfirmPasswordValidationSupport isRequired() {
+  ConfirmPasswordValidationSupport isRequired({String? message}) {
     if (_confirmPassword.trim().isEmpty) {
-      _error ??= "Confirm password is required";
+      _error ??=message ?? "Confirm password is required";
     }
     return this;
   }
 
-  ConfirmPasswordValidationSupport matchesPassword() {
+  ConfirmPasswordValidationSupport matchesPassword({String? message}) {
     if (_password != _confirmPassword) {
-      _error ??= "Passwords do not match";
+      _error ??= message ?? "Passwords do not match";
+    }
+    return this;
+  }
+
+  ConfirmPasswordValidationSupport custom(
+    bool Function(String password, String confirmPassword) validator,{
+    String message = "Confirm password is invalid",
+  }) {
+    if (_error != null) return this;
+
+    if (!validator(_password, _confirmPassword)) {
+      _error = message;
     }
     return this;
   }
