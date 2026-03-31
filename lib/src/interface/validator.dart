@@ -13,4 +13,6 @@ abstract class Validator {
     required String? password,
     required String? confirmPassword,
   });
+
+  String? multiValidator({required List<String?> validations});
 }

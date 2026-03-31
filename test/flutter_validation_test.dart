@@ -37,4 +37,18 @@ void main() {
         .validate();
     expect(validation, null);
   });
+
+  test("check multi", () {
+    List<String?> validationslist = [
+      Validators()
+          .emailValidator(value: "bharat@gmail.com")
+          .isValidEmail()
+          .validate(),
+      Validators().passwordValidator(value: "bharat1").hasNumber().validate(),
+    ];
+
+    var validator = Validators().multiValidator(validations: validationslist);
+
+    expect(validator, null);
+  });
 }

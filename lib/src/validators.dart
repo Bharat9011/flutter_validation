@@ -30,4 +30,12 @@ class Validators implements Validator {
       confirmPassword: confirmPassword ?? '',
     );
   }
+
+  @override
+  String? multiValidator({required List<String?> validations}) {
+    for (var val in validations) {
+      if (val != null) return val;
+    }
+    return null;
+  }
 }
