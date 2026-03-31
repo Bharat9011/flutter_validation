@@ -15,7 +15,6 @@ class Validators implements Validator {
     return EmailValidationSupport(value!);
   }
 
-
   PasswordValidationSupport passwordValidator({required String? value}) {
     return PasswordValidationSupport(value ?? '');
   }

@@ -3,7 +3,7 @@ class ConfirmPasswordValidationSupport {
   final String _confirmPassword;
   String? _error;
 
-ConfirmPasswordValidationSupport({
+  ConfirmPasswordValidationSupport({
     required String password,
     required String confirmPassword,
   }) : _password = password,
