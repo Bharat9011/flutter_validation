@@ -1,4 +1,5 @@
 import 'package:flutter_validation/src/validation_support/confirm_password_validation_support.dart';
+import 'package:flutter_validation/src/validation_support/contact_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/email_validation_support.dart';
 import 'package:flutter_validation/src/validation_support/password_validation_support.dart';
 
@@ -6,8 +7,8 @@ import 'interface/validator.dart';
 
 class Validators implements Validator {
   @override
-  String? contactValidator({required String? value}) {
-    return "";
+  ContactValidationSupport? contactValidator({required String? value}) {
+    return ContactValidationSupport(value!);
   }
 
   @override
