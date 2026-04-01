@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_validation/src/validation_support/confirm_password_validation_support.dart';
+import 'package:validators/src/validation_support/confirm_password_validation_support.dart';
 
 void main() {
   group('ConfirmPasswordValidationSupport', () {

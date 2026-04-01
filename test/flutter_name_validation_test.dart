@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_validation/src/validation_support/name_validation_support.dart';
+import 'package:validators/src/validation_support/name_validation_support.dart';
 
 void main() {
   test('returns null for a valid name', () {

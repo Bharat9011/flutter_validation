@@ -1,4 +1,4 @@
-# flutter_validation
+# validators
 
 A lightweight Flutter package for simple, chainable form validation.
 
@@ -17,8 +17,8 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_validation:
-    path: ../flutter_validation
+  validators:
+    path: ../validators
 ```
 
 Then run:
@@ -30,7 +30,7 @@ flutter pub get
 ## Import
 
 ```dart
-import 'package:flutter_validation/flutter_validation.dart';
+import 'package:validators/validators.dart';
 ```
 
 ## Basic Usage
