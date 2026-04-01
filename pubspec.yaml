@@ -1,6 +1,6 @@
 name: "flutter_validator_pro"
 description: "A Flutter plugin for form validation including email, password, phone number, and custom multi-validator support."
-version: 0.1.1
+version: 0.1.2
 homepage: "https://github.com/Bharat9011/flutter_validation"
 
 environment:
