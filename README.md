@@ -17,8 +17,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  validators:
-    path: ../validators
+  flutter_validator_pro: ^0.1.0
 ```
 
 Then run:
@@ -30,7 +29,7 @@ flutter pub get
 ## Import
 
 ```dart
-import 'package:validators/validators.dart';
+import 'package:flutter_validator_pro/flutter_validation.dart';;
 ```
 
 ## Basic Usage
