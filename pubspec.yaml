@@ -1,5 +1,5 @@
 name: flutter_validation
-description: "A new Flutter package project."
+description: "A Flutter plugin for form validation including email, password, phone number, and custom multi-validator support."
 version: 0.1.0
 homepage: "https://github.com/tanvih1429/flutter_validation"
 
