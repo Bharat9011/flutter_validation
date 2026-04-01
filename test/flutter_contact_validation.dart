@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:form_validations/src/validation_support/contact_validation_support.dart';
+import 'package:flutter_validator_pro/src/validation_support/contact_validation_support.dart';
 
 void main() {
   test('returns null for a valid contact number', () {

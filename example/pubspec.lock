@@ -75,7 +75,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  form_validations:
+  flutter_validator_pro:
     dependency: "direct main"
     description:
       path: ".."
