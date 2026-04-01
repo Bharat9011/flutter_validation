@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validators/src/validators.dart';
+import 'package:form_validations/src/validators.dart';
 
 void main() {
   test('Email Formate Check', () {

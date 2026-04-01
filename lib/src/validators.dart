@@ -1,9 +1,9 @@
-import 'package:validators/src/validation_support/confirm_password_validation_support.dart';
-import 'package:validators/src/validation_support/contact_validation_support.dart';
-import 'package:validators/src/validation_support/email_validation_support.dart';
-import 'package:validators/src/validation_support/name_validation_support.dart';
-import 'package:validators/src/validation_support/number_validation_support.dart';
-import 'package:validators/src/validation_support/password_validation_support.dart';
+import 'package:form_validations/src/validation_support/confirm_password_validation_support.dart';
+import 'package:form_validations/src/validation_support/contact_validation_support.dart';
+import 'package:form_validations/src/validation_support/email_validation_support.dart';
+import 'package:form_validations/src/validation_support/name_validation_support.dart';
+import 'package:form_validations/src/validation_support/number_validation_support.dart';
+import 'package:form_validations/src/validation_support/password_validation_support.dart';
 
 import 'interface/validator.dart';
 

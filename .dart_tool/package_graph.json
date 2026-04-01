@@ -1,10 +1,10 @@
 {
   "roots": [
-    "validators"
+    "form_validations"
   ],
   "packages": [
     {
-      "name": "validators",
+      "name": "form_validations",
       "version": "0.1.0",
       "dependencies": [
         "flutter"

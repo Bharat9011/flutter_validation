@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validators/src/validation_support/number_validation_support.dart';
+import 'package:form_validations/src/validation_support/number_validation_support.dart';
 
 void main() {
   test('returns null for valid OTP', () {
