@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_validator_pro/flutter_validation.dart';
+import 'package:flutter_validator_pro/flutter_validator_pro.dart';
 
 void main() {
   runApp(const MyApp());
