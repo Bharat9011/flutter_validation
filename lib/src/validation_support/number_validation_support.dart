@@ -1,9 +1,12 @@
+/// Chainable validation rules for numeric string values.
 class NumberValidationSupport {
   final String _value;
   String? _error;
 
+  /// Creates a number validator for the provided value.
   NumberValidationSupport(String value) : _value = value;
 
+  /// Fails when the value is empty or contains only whitespace.
   NumberValidationSupport isRequired({String? message}) {
     if (_value.trim().isEmpty) {
       _error ??= message ?? "Number is required";
@@ -11,6 +14,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value contains characters other than digits.
   NumberValidationSupport digitsOnly({String? message}) {
     if (!RegExp(r'^\d+$').hasMatch(_value)) {
       _error ??= message ?? "Only digits are allowed";
@@ -18,6 +22,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value length is shorter than [length].
   NumberValidationSupport minLength(int length, {String? message}) {
     if (_value.length < length) {
       _error ??= message ?? "Must be at least $length digits";
@@ -25,6 +30,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value length is longer than [length].
   NumberValidationSupport maxLength(int length, {String? message}) {
     if (_value.length > length) {
       _error ??= message ?? "Must be less than $length digits";
@@ -32,6 +38,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value length is not exactly [length].
   NumberValidationSupport exactLength(int length, {String? message}) {
     if (_value.length != length) {
       _error ??= message ?? "Must be exactly $length digits";
@@ -39,6 +46,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the parsed number is lower than [min].
   NumberValidationSupport minValue(num min, {String? message}) {
     final number = num.tryParse(_value);
     if (number == null || number < min) {
@@ -47,6 +55,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the parsed number is greater than [max].
   NumberValidationSupport maxValue(num max, {String? message}) {
     final number = num.tryParse(_value);
     if (number == null || number > max) {
@@ -55,6 +64,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the parsed number is outside the inclusive range.
   NumberValidationSupport inRange(num min, num max, {String? message}) {
     final number = num.tryParse(_value);
     if (number == null || number < min || number > max) {
@@ -63,6 +73,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value is not a valid integer.
   NumberValidationSupport isInteger({String? message}) {
     if (!RegExp(r'^-?\d+$').hasMatch(_value)) {
       _error ??= message ?? "Value must be an integer";
@@ -70,6 +81,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the parsed number is not greater than zero.
   NumberValidationSupport isPositive({String? message}) {
     final number = num.tryParse(_value);
     if (number == null || number <= 0) {
@@ -78,6 +90,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Fails when the value contains spaces.
   NumberValidationSupport noSpaces({String? message}) {
     if (_value.contains(' ')) {
       _error ??= message ?? "Spaces are not allowed";
@@ -85,6 +98,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Applies a custom [validator] and stores [message] when it fails.
   NumberValidationSupport custom(
     bool Function(String value) validator, {
     String message = "Number is invalid",
@@ -97,6 +111,7 @@ class NumberValidationSupport {
     return this;
   }
 
+  /// Returns the first validation error, or `null` if all rules passed.
   String? validate() {
     return _error;
   }

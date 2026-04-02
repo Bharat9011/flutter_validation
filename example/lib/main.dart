@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  return Validators()
+                  return FlutterValidatorPro()
                       .emailValidator(value: value)
                       .isRequired()
                       .isValidEmail()
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: "Password",
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) => Validators()
+                validator: (value) => FlutterValidatorPro()
                     .passwordValidator(value: value)
                     .isRequired()
                     .validate(),
@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: "Confirm Password",
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) => Validators()
+                validator: (value) => FlutterValidatorPro()
                     .confirmPasswordValidator(
                       password: passwordController.text,
                       confirmPassword: value,
